@@ -91,7 +91,7 @@ public class RefreshControl: UIControl {
         heightConstraint?.constant = view.bounds.height
     }
 
-    public func beginRefreshing() {
+    @objc public func beginRefreshing() {
         guard !isRefreshing else { return }
 
         isHidden = false
@@ -104,7 +104,7 @@ public class RefreshControl: UIControl {
         view.willRefresh()
     }
 
-    public func endRefreshing() {
+    @objc public func endRefreshing() {
         guard isRefreshing else { return }
 
         progress.value = 0.0

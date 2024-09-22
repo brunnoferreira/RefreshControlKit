@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIScrollView: RefreshControllable {
-    public func addRefreshControl(_ refresh: RefreshControl) {
+    @objc public func addRefreshControl(_ refresh: RefreshControl) {
         refresh.add(to: self)
     }
 }
