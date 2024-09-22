@@ -92,6 +92,10 @@ public class RefreshControl: UIControl {
     }
 
     @objc public func beginRefreshing() {
+        beginRefreshing(expandScrollViewContentInsets: true)
+    }
+
+    private func beginRefreshing(expandScrollViewContentInsets: Bool) {
         guard !isRefreshing else { return }
 
         isHidden = false
@@ -102,6 +106,10 @@ public class RefreshControl: UIControl {
         progress.value = 1.0
 
         view.willRefresh()
+
+        if expandScrollViewContentInsets {
+            expandScrollViewContentInsetTop()
+        }
     }
 
     @objc public func endRefreshing() {
@@ -228,11 +236,7 @@ public class RefreshControl: UIControl {
         }
 
         if shouldRefresh {
-            beginRefreshing()
-        }
-
-        if shouldExpandInset {
-            expandScrollViewContentInsetTop()
+            beginRefreshing(expandScrollViewContentInsets: shouldExpandInset)
         }
     }
 }
