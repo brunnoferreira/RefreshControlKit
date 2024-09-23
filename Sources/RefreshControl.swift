@@ -189,6 +189,11 @@ public class RefreshControl: UIControl {
         originScrollViewContentInset = scrollView.contentInset
 
         let recognizer = UIPanGestureRecognizer(target: self, action: #selector(viewPanned))
+        
+        if #available(iOS 13.4, *) {
+            recognizer.allowedScrollTypesMask = scrollView.panGestureRecognizer.allowedScrollTypesMask
+        }
+        
         recognizer.delegate = self
         scrollView.addGestureRecognizer(recognizer)
 
